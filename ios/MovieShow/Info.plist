@@ -50,6 +50,15 @@
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>
+			<key>doubanio.com</key>
+			<dict>
+				<!--Include to allow subdomains from douban-->
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<!--Include to allow HTTP requests-->
+				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 		</dict>
 	</dict>
 </dict>
