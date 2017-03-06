@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
 
 export default class FooterButton extends Component {
+  _onButtonPress = () => {};
+
   render() {
     const {
      title,
@@ -12,7 +14,7 @@ export default class FooterButton extends Component {
 
     return(
       <View style={styles.wrapper}>
-        <Button title={title} color={color}/>
+        <Button title={title} color={color} onPress={this._onButtonPress}/>
       </View>
     )
   }

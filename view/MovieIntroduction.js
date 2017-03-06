@@ -1,33 +1,39 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-
+import { View, Text, StyleSheet, Image, TouchableWithoutFeedback } from 'react-native';
+import MovieDetail from './MovieDetail';
 import Stars from './Stars'
 
 export default class MovieIntroduction extends Component {
+  _handlePress = () => {
+    console.log(this.props.movie.index);
+  };
+
   render() {
     let movie = this.props.movie;
     let index = movie.index;
     if (movie.index < 10) index = '0' + movie.index;
 
     return(
-      <View>
-        <View style={styles.movieIndexWrapper}>
-          <Text style={styles.movieIndex}>{index}</Text>
+      <TouchableWithoutFeedback onPress={this._handlePress}>
+        <View>
+          <View style={styles.movieIndexWrapper}>
+            <Text style={styles.movieIndex}>{index}</Text>
+          </View>
+          <View style={styles.movieDetail}>
+            <View style={styles.movieDetailLeft}>
+              <Image style={styles.movieImage} source={{uri: movie.image}}/>
+            </View>
+            <View style={styles.movieDetailMiddle}>
+              <View style={styles.movieDetailItem}><Text style={styles.movieName}>{movie.name}</Text></View>
+              <View style={styles.movieDetailItem}><Text style={styles.englishName}>{movie.englishName}</Text></View>
+              <View style={styles.movieDetailItem}><Stars rate={movie.rate}/></View>
+            </View>
+            <View style={styles.movieDetailRight}>
+              <Text style={styles.movieRightText}>></Text>
+            </View>
+          </View>
         </View>
-        <View style={styles.movieDetail}>
-          <View style={styles.movieDetailLeft}>
-            <Image style={styles.movieImage} source={{uri: movie.image}}/>
-          </View>
-          <View style={styles.movieDetailMiddle}>
-            <View style={styles.movieDetailItem}><Text style={styles.movieName}>{movie.name}</Text></View>
-            <View style={styles.movieDetailItem}><Text style={styles.englishName}>{movie.englishName}</Text></View>
-            <View style={styles.movieDetailItem}><Stars rate={movie.rate}/></View>
-          </View>
-          <View style={styles.movieDetailRight}>
-            <Text style={styles.movieRightText}>></Text>
-          </View>
-        </View>
-      </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
