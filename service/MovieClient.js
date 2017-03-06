@@ -9,7 +9,6 @@ export default class MovieClient {
     return fetch(`${this.baseUrl}?count=${this.pageSize}&start=${this.start}`)
       .then(response => response.json())
       .then(responseJson => {
-        console.log('loading: ' + this.start);
         this.start += this.pageSize;
         return responseJson.subjects;
       })

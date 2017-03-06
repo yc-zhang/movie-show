@@ -5,6 +5,11 @@ import MovieIntroduction from './MovieIntroduction';
 import MovieClient from '../service/MovieClient';
 
 export default class MovieList extends Component {
+
+  static propTypes = {
+    navigator: PropTypes.object.isRequired,
+  }
+
   constructor() {
     super();
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -64,7 +69,7 @@ export default class MovieList extends Component {
     return(
       <ListView
         dataSource={this.state.dataSource}
-        renderRow={movie => <MovieIntroduction movie={movie}/>}
+        renderRow={movie => <MovieIntroduction movie={movie} navigator={this.props.navigator}/>}
         onEndReached={this._onEndReached}
       />
     );

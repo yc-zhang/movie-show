@@ -5,7 +5,20 @@ import Stars from './Stars'
 
 export default class MovieIntroduction extends Component {
   _handlePress = () => {
-    console.log(this.props.movie.index);
+    this.props.navigator.push(this._props());
+  };
+
+  _props = () => {
+    return {
+      component: MovieDetail,
+      title: this.props.movie.name,
+      barTintColor: 'black',
+      titleTextColor: 'white',
+      leftButtonSystemIcon: 'reply',
+      rightButtonSystemIcon: 'action',
+      passProps: { movie: this.props.movie },
+      onLeftButtonPress: () => this.props.navigator.pop(0)
+    }
   };
 
   render() {
